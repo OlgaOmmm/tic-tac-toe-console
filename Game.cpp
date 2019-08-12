@@ -34,7 +34,7 @@ int Game::getPlayerData() {
 		}
 		else {
 			std::cin.ignore(32767, '\n'); 
-			if ((a < SIZE) && (a > 0)) {
+			if ((a <= SIZE) && (a > 0)) {
 				if (static_cast<int>(arr[a - 1]) == 49 + a - 1) //compare ascii
 					return a;
 			}
