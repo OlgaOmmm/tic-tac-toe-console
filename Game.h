@@ -2,6 +2,7 @@
 class Game {
 public:
 	Game();
+	void start();
 	void draw();
 	int getPlayerData();
 	void setPlayerData();
@@ -10,7 +11,7 @@ public:
 private:
 	static const int SIZE = 9;
 	char arr[SIZE] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-	int currentPlayer = 1; // or 2
-	char playerSign = 'O'; // or 'X'
-	char inputNumber = ' ';
+	int currentPlayer;
+	char playerSign;
+	char inputNumber;
 };
