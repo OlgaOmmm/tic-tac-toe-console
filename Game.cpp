@@ -1,9 +1,15 @@
 #include <iostream>
 #include "Game.h"
 
-//game cycle
 Game::Game() {
-	while (!endOfGame()){
+	currentPlayer = 1; // or 2
+	playerSign = 'O'; // or 'X'
+	inputNumber = ' ';
+}
+
+//game cycle
+void Game::start() {
+	while (!endOfGame()) {
 		draw();
 		std::cout << "\twaiting for player" << currentPlayer << '\n';
 		inputNumber = getPlayerData();
