@@ -4,11 +4,11 @@
 //game cycle
 Game::Game() {
 	while (!endOfGame()){
-		this->draw();
-		std::cout << "\twaiting for player " << current_player << '\n';
-		inputNumber = this->getPlayerData();
-		this->setPlayerData();
-		this->player_change();
+		draw();
+		std::cout << "\twaiting for player" << currentPlayer << '\n';
+		inputNumber = getPlayerData();
+		setPlayerData();
+		playerChange();
 	}
 }
 
@@ -44,20 +44,20 @@ int Game::getPlayerData() {
 
 //writing to arr 'X' or 'O'
 void Game::setPlayerData() {
-	arr[inputNumber - 1] = player_sign;
+	arr[inputNumber - 1] = playerSign;
 }
 
-//next player
-void Game::player_change() {
+//change player
+void Game::playerChange() {
 
 	//change current player
-	if (current_player == 1) {
-		current_player = 2;
-		player_sign = 'X';
+	if (currentPlayer == 1) {
+		currentPlayer = 2;
+		playerSign = 'X';
 	}
-	else if (current_player == 2) {
-		current_player = 1;
-		player_sign = 'O';
+	else if (currentPlayer == 2) {
+		currentPlayer = 1;
+		playerSign = 'O';
 	}
 }
 
@@ -70,8 +70,8 @@ bool Game::endOfGame() {
 		((arr[0] == arr[3]) && (arr[3] == arr[6])) || ((arr[1] == arr[4]) && (arr[4] == arr[7])) || ((arr[2] == arr[5]) && (arr[5] == arr[8])) || //compare columns
 		((arr[0] == arr[4]) && (arr[4] == arr[8])) || ((arr[2] == arr[4]) && (arr[4] == arr[6]))) //compare diagonals
 		{
-		this->draw();
-		if (current_player == 1)
+		draw();
+		if (currentPlayer == 1)
 			std::cout << "\tPlayer2 win!\nGAME OVER";
 		else
 			std::cout << "\tPlayer1 win!\nGAME OVER";
