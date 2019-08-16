@@ -5,7 +5,7 @@ public:
 	void start();
 	void draw();
 	int getPlayerData();
-	void setPlayerData();
+	void setPlayerData(char &inputNumber, char &playerSign);
 	void playerChange();
 	bool endOfGame();
 private:
