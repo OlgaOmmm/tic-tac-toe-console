@@ -6,14 +6,13 @@ Game::Game() {
 	playerSign = 'O'; // or 'X'
 	inputNumber = ' ';
 }
-
+	
 //game cycle
 void Game::start() {
 	while (!endOfGame()) {
 		draw();
 		std::cout << "\twaiting for Player" << currentPlayer << '\n';
-		inputNumber = getPlayerData();
-		setPlayerData();
+		setPlayerData(inputNumber=getPlayerData(), playerSign);
 		playerChange();
 	}
 }
@@ -49,7 +48,7 @@ int Game::getPlayerData() {
 }
 
 //writing to arr 'X' or 'O'
-void Game::setPlayerData() {
+void Game::setPlayerData(char& inputNumber, char& playerSign) {
 	arr[inputNumber - 1] = playerSign;
 }
 
