@@ -11,7 +11,7 @@ public:
 private:
 	static const int SIZE = 9;
 	char arr[SIZE] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-	int currentPlayer;
+	enum players { player1 = 1, player2 } currentPlayer;
 	char playerSign;
 	char inputNumber;
 };
