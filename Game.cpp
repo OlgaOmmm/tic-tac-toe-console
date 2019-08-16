@@ -2,7 +2,7 @@
 #include "Game.h"
 
 Game::Game() {
-	currentPlayer = 1; // or 2
+	currentPlayer = player1;
 	playerSign = 'O'; // or 'X'
 	inputNumber = ' ';
 }
@@ -11,7 +11,7 @@ Game::Game() {
 void Game::start() {
 	while (!endOfGame()) {
 		draw();
-		std::cout << "\twaiting for player" << currentPlayer << '\n';
+		std::cout << "\twaiting for Player" << currentPlayer << '\n';
 		inputNumber = getPlayerData();
 		setPlayerData();
 		playerChange();
@@ -35,11 +35,11 @@ int Game::getPlayerData() {
 		std::cin >> a;
 
 		if (std::cin.fail()) {
-			std::cin.clear(); 
+			std::cin.clear();
 			std::cin.ignore(32767, '\n');
 		}
 		else {
-			std::cin.ignore(32767, '\n'); 
+			std::cin.ignore(32767, '\n');
 			if ((a <= SIZE) && (a > 0)) {
 				if (static_cast<int>(arr[a - 1]) == 49 + a - 1) //compare ascii
 					return a;
@@ -57,12 +57,12 @@ void Game::setPlayerData() {
 void Game::playerChange() {
 
 	//change current player
-	if (currentPlayer == 1) {
-		currentPlayer = 2;
+	if (currentPlayer ==player1) {
+		currentPlayer = player2;
 		playerSign = 'X';
 	}
-	else if (currentPlayer == 2) {
-		currentPlayer = 1;
+	else {
+		currentPlayer = player1;
 		playerSign = 'O';
 	}
 }
@@ -75,14 +75,14 @@ bool Game::endOfGame() {
 	if (((arr[0] == arr[1]) && (arr[1] == arr[2])) || ((arr[3] == arr[4]) && (arr[4] == arr[5])) || ((arr[6] == arr[7]) && (arr[7] == arr[8])) || //compare lines
 		((arr[0] == arr[3]) && (arr[3] == arr[6])) || ((arr[1] == arr[4]) && (arr[4] == arr[7])) || ((arr[2] == arr[5]) && (arr[5] == arr[8])) || //compare columns
 		((arr[0] == arr[4]) && (arr[4] == arr[8])) || ((arr[2] == arr[4]) && (arr[4] == arr[6]))) //compare diagonals
-		{
+	{
 		draw();
-		if (currentPlayer == 1)
+		if (currentPlayer == player1)
 			std::cout << "\tPlayer2 win!\nGAME OVER";
 		else
 			std::cout << "\tPlayer1 win!\nGAME OVER";
 		return true;
-		}
+	}
 
 	//if player's moves are over - DRAW
 	for (int i = 0; i < SIZE; ++i) {
