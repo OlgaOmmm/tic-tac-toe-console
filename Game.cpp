@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Game.h"
 
 Game::Game() {
@@ -27,29 +28,22 @@ void Game::draw() {
 }
 
 //input data processing
-int Game::getPlayerData() {
+char Game::getPlayerData() {
+	std::string playerData;
+	char verifiedData;
 	while (true) {
-		int a;
 		std::cout << "please, input a number from 1 to 9 to do your turn\n";
-		std::cin >> a;
-
-		if (std::cin.fail()) {
-			std::cin.clear();
-			std::cin.ignore(32767, '\n');
-		}
-		else {
-			std::cin.ignore(32767, '\n');
-			if ((a <= SIZE) && (a > 0)) {
-				if (static_cast<int>(arr[a - 1]) == 49 + a - 1) //compare ascii
-					return a;
-			}
-		}
+		std::getline(std::cin, playerData);
+		if (playerData.length() == 1 && playerData[0] <= '9' && playerData[0] >= '1')
+			return verifiedData = playerData[0];
 	}
 }
 
 //writing to arr 'X' or 'O'
 void Game::setPlayerData(char& inputNumber, char& playerSign) {
-	arr[inputNumber - 1] = playerSign;
+	int arrIndex;
+	arrIndex = (int)inputNumber - 49;
+	arr[arrIndex] = playerSign;
 }
 
 //change player
