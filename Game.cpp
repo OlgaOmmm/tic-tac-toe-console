@@ -54,7 +54,7 @@ void Game::playerChange() {
 }
 
 bool Game::endOfGame() {
-	int arr_compare = 0;
+	static int arr_compare = 0;
 
 	// if someone WIN
 	if (((arr[0] == arr[1]) && (arr[1] == arr[2])) || ((arr[3] == arr[4]) && (arr[4] == arr[5])) || ((arr[6] == arr[7]) && (arr[7] == arr[8])) || //compare lines
@@ -70,11 +70,8 @@ bool Game::endOfGame() {
 	}
 
 	//if player's moves are over - DRAW
-	for (int i = 0; i < SIZE; ++i) {
-		if ((arr[i] == 'X') || (arr[i]) == 'O')
-			arr_compare++;
-	}
-	if (arr_compare == SIZE) {
+	arr_compare++;
+	if (arr_compare > 9) {
 		std::cout << "\tDraw!\n\nGAME OVER\n";
 		return true;
 	}
