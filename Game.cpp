@@ -26,12 +26,11 @@ void Game::draw() {
 
 char Game::getPlayerData() {
 	std::string playerData;
-	char verifiedData;
 	while (true) {
 		std::cout << "please, input a number from 1 to 9 to do your turn\n";
 		std::getline(std::cin, playerData);
 		if (playerData.length() == 1 && playerData[0] <= '9' && playerData[0] >= '1')
-			return verifiedData = playerData[0];
+			return playerData[0];
 	}
 }
 
@@ -64,9 +63,9 @@ bool Game::endOfGame() {
 	{
 		draw();
 		if (currentPlayer == PlayerType::CROSS)
-			std::cout << "\tPlayer2 win!\nGAME OVER";
+			std::cout << "\tPlayer2 win!\n\nGAME OVER\n";
 		else
-			std::cout << "\tPlayer1 win!\nGAME OVER";
+			std::cout << "\tPlayer1 win!\n\nGAME OVER\n";
 		return true;
 	}
 
@@ -76,7 +75,7 @@ bool Game::endOfGame() {
 			arr_compare++;
 	}
 	if (arr_compare == SIZE) {
-		std::cout << "\tDraw!\nGAME OVER\n";
+		std::cout << "\tDraw!\n\nGAME OVER\n";
 		return true;
 	}
 	else
