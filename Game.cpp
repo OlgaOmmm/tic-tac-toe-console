@@ -3,22 +3,19 @@
 #include "Game.h"
 
 Game::Game() {
-	currentPlayer = player1;
-	playerSign = 'O'; // or 'X'
-	inputNumber = ' ';
+	currentPlayer = PlayerType::CROSS;
+	playerSign = 'X'; // or 'O'
 }
 	
-//game cycle
 void Game::start() {
 	while (!endOfGame()) {
 		draw();
 		std::cout << "\twaiting for Player" << currentPlayer << '\n';
-		setPlayerData(inputNumber=getPlayerData(), playerSign);
+		setPlayerData(getPlayerData(), playerSign);
 		playerChange();
 	}
 }
 
-//draw game space
 void Game::draw() {
 	std::cout << "._______.\n";
 	std::cout << "|XO-game|\n";
@@ -27,7 +24,6 @@ void Game::draw() {
 	std::cout << "|_" << arr[6] << "_" << arr[7] << "_" << arr[8] << "_|\n";
 }
 
-//input data processing
 char Game::getPlayerData() {
 	std::string playerData;
 	char verifiedData;
@@ -39,28 +35,25 @@ char Game::getPlayerData() {
 	}
 }
 
-//writing to arr 'X' or 'O'
-void Game::setPlayerData(char& inputNumber, char& playerSign) {
+void Game::setPlayerData(char inputNumber, char& playerSign) {
 	int arrIndex;
 	arrIndex = (int)inputNumber - 49;
 	arr[arrIndex] = playerSign;
 }
 
-//change player
 void Game::playerChange() {
 
 	//change current player
-	if (currentPlayer ==player1) {
-		currentPlayer = player2;
+	if (currentPlayer == PlayerType::NAUGHT) {
+		currentPlayer = PlayerType::CROSS;
 		playerSign = 'X';
 	}
 	else {
-		currentPlayer = player1;
+		currentPlayer = PlayerType::NAUGHT;
 		playerSign = 'O';
 	}
 }
 
-//when game over - write result (win or draw)
 bool Game::endOfGame() {
 	int arr_compare = 0;
 
@@ -70,7 +63,7 @@ bool Game::endOfGame() {
 		((arr[0] == arr[4]) && (arr[4] == arr[8])) || ((arr[2] == arr[4]) && (arr[4] == arr[6]))) //compare diagonals
 	{
 		draw();
-		if (currentPlayer == player1)
+		if (currentPlayer == PlayerType::CROSS)
 			std::cout << "\tPlayer2 win!\nGAME OVER";
 		else
 			std::cout << "\tPlayer1 win!\nGAME OVER";
