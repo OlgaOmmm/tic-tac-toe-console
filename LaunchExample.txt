@@ -1,0 +1,48 @@
+._______.
+|XO-game|
+|_1_2_3_|
+|_4_5_6_|
+|_7_8_9_|
+        waiting for Player1
+please, input a number from 1 to 9 to do your turn
+5
+._______.
+|XO-game|
+|_1_2_3_|
+|_4_X_6_|
+|_7_8_9_|
+        waiting for Player2
+please, input a number from 1 to 9 to do your turn
+1
+._______.
+|XO-game|
+|_O_2_3_|
+|_4_X_6_|
+|_7_8_9_|
+        waiting for Player1
+please, input a number from 1 to 9 to do your turn
+3
+._______.
+|XO-game|
+|_O_2_X_|
+|_4_X_6_|
+|_7_8_9_|
+        waiting for Player2
+please, input a number from 1 to 9 to do your turn
+9
+._______.
+|XO-game|
+|_O_2_X_|
+|_4_X_6_|
+|_7_8_O_|
+        waiting for Player1
+please, input a number from 1 to 9 to do your turn
+7
+._______.
+|XO-game|
+|_O_2_X_|
+|_4_X_6_|
+|_X_8_O_|
+        Player1 win!
+
+GAME OVER
